@@ -4,14 +4,17 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "webpack-dev-server --config ./config/webpack.dev.js --watch --open"
+		"dev": "webpack-dev-server --config ./config/webpack.dev.js --watch --open",
+		"storybook": "start-storybook -p 6006 .storybook"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@storybook/react": "^4.0.10",
 		"@types/react": "^16.7.11",
 		"@types/react-dom": "^16.0.11",
+		"@types/storybook__react": "^4.0.0",
 		"react": "^16.6.3",
 		"react-dom": "^16.6.3"
 	},
