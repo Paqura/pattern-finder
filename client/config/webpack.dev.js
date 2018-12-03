@@ -8,6 +8,8 @@ const
 	UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
 	webpack = require('webpack');
 
+console.log(path.resolve(__dirname, 'src/'));
+
 module.exports = {
 	mode: isProduction ? 'production' : 'development',
 	cache  : true,
@@ -38,7 +40,7 @@ module.exports = {
 				use: 'ts-loader',
 				exclude: /node_modules/
 			},
-			
+
 			{
 				test: /\.m?js$/,
 				exclude: /(node_modules|bower_components)/,
@@ -95,6 +97,10 @@ module.exports = {
 	].filter(i => Boolean(i)),
 
 	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, '..', 'src/'),
+		},
+
 		extensions: ['.ts', '.tsx', '.js', '.json'],
 
 		modules: [
