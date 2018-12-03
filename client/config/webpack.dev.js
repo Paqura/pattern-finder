@@ -8,11 +8,8 @@ const
 	UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
 	webpack = require('webpack');
 
-console.log(path.resolve(__dirname, 'src/'));
-
 module.exports = {
 	mode: isProduction ? 'production' : 'development',
-	cache  : true,
 	context: path.resolve(__dirname, '..'),
 	devtool: isProduction ? false : 'cheap-module-eval-source-map',
 
@@ -39,6 +36,12 @@ module.exports = {
 				test: /\.tsx?$/,
 				use: 'ts-loader',
 				exclude: /node_modules/
+			},
+
+			{
+				enforce: "pre",
+				test: /\.js$/,
+				loader: "source-map-loader"
 			},
 
 			{

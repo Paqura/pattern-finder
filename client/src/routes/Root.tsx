@@ -1,12 +1,14 @@
 import * as React from 'react';
-import {Switch, HashRouter as Router, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
+
+const indexRoute = () => <div>Main page</div>;
 
 const Root = () => {
-	<Router>
+	return(
 		<Switch>
-			<Route />
+			<Route  component={indexRoute} />
 		</Switch>
-	</Router>
+	)
 };
 
 export default Root;
