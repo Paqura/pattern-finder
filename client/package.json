@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "webpack-dev-server --config ./config/webpack.dev.js --watch --open",
+		"dev": "webpack-dev-server --config ./config/webpack.dev.js --watch",
 		"build": "better-npm-run build",
 		"storybook": "start-storybook -p 6006 .storybook"
 	},
@@ -57,6 +57,7 @@
 		"storybook-addon-jsx": "^6.0.0",
 		"style-loader": "^0.23.1",
 		"ts-loader": "^5.3.1",
+		"tslint": "^5.11.0",
 		"tslint-config-airbnb": "^5.11.1",
 		"typescript": "^3.2.1",
 		"uglifyjs-webpack-plugin": "^2.0.1",

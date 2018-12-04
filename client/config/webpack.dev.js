@@ -67,7 +67,7 @@ module.exports = {
 			? [new UglifyJsPlugin()]
 			: undefined,
 
-		runtimeChunk: true,
+		//runtimeChunk: true,
 
 		splitChunks: {
 			cacheGroups: {
@@ -101,7 +101,11 @@ module.exports = {
 
 	resolve: {
 		alias: {
-			'@': path.resolve(__dirname, '..', 'src/'),
+			'Components': path.resolve(__dirname, '..', 'src/components'),
+			'Ducks': path.resolve(__dirname, '..', 'src/ducks'),
+			'Store': path.resolve(__dirname, '..', 'src/store'),
+			'Reducers': path.resolve(__dirname, '..', 'src/reducers'),
+			'Typedefs': path.resolve(__dirname, '..', 'src/typedefs'),
 		},
 
 		extensions: ['.ts', '.tsx', '.js', '.json'],
