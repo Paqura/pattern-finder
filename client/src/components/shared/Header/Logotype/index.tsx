@@ -1,18 +1,38 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {Logo} from 'Components/shared/Vectors/index';
 
+type TTheme = {
+	theme: {
+		spacer: string;
+	},
+};
+
+const
+	LinkStyle = {
+		display: 'flex',
+		alignItems: 'center',
+		fontSize: '30px',
+		textTransform: 'uppercase',
+		textDecoration: 'none',
+		color: '#212121',
+	};
+
+const
+	LogoText = styled.span`
+		margin-left: ${(props: TTheme) => props.theme.spacer};
+	`;
+
 const Logotype = () => {
 	return(
-		<div>
-			<Link to="/">
-				<Logo
-					width={40}
-					height={40}
-				/>
-				<h1>patter finder</h1>
-			</Link>
-		</div>
+		<Link to="/" style={LinkStyle}>
+			<Logo
+				width={40}
+				height={40}
+			/>
+			<LogoText>Pattern finder</LogoText>
+		</Link>
 	);
 };
 
