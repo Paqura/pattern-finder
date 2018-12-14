@@ -1,4 +1,5 @@
 const
+	CleanWebpackPlugin = require('clean-webpack-plugin'),
 	ExtractTextPlugin = require('extract-text-webpack-plugin'),
 	fs = require('fs'),
 	HtmlWebpackPlugin = require('html-webpack-plugin'),
@@ -59,6 +60,40 @@ module.exports = {
 				test: /\.css/,
 				use: ['style-loader', 'css-loader'],
 			},
+
+			{
+				test: /\.(png|jpg)$/,
+
+				use: {
+					loader: 'file-loader',
+					options: {
+						outputPath: 'images/',
+						emitFile: false,
+					},
+				},
+			},
+
+			{
+				test: /\.svg$/,
+				use: [
+					{
+						loader: "babel-loader"
+					},
+					{
+						loader: "react-svg-loader",
+						options: {
+							jsx: true,
+						}
+					}
+				]
+			},
+
+			{
+				test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+				use: {
+					loader: 'file-loader',
+				},
+			},
 		],
 	},
 
@@ -85,6 +120,7 @@ module.exports = {
 	performance: {hints: false},
 
 	plugins: [
+		new CleanWebpackPlugin(['build'], {root:path.resolve(__dirname, '..')}),
 		isProduction ? new ExtractTextPlugin({allChunks: true, filename: '[name]-[chunkhash].css'}) : null,
 
 		new HtmlWebpackPlugin({

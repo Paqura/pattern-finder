@@ -1,4 +1,7 @@
 {
+	"paths": {
+		"Typedefs/*": "./client/src/typedefs/*"
+	},
 	"compilerOptions": {
 		"baseUrl": "./",
 		"outDir": "build",
@@ -14,10 +17,7 @@
     "noImplicitAny": true,
 		"strictNullChecks": true
 	},
-	"paths": {
-		"Typedefs/*": "./client/src/typedefs/*"
-	},
-	"include": ["./client/src/**/*"],
+	"include": ["./client/src/**/*", "client/config/.svgrrc.js"],
 	"exclude":[
 		"node_modules"
 	]
