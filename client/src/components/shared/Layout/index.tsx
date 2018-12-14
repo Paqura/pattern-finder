@@ -1,13 +1,13 @@
 import * as React from 'react';
-import Header from '../Header';
-import Container from '../Container';
+import Header from 'Components/shared/Header/index';
+import Container from 'Components/shared/Container/index';
 
 const Layout = (props: any) => {
 	return(
-		<React.Fragment>
+		<>
 			<Header />
 			<Container children={props.children} />
-		</React.Fragment>
+		</>
 	);
 };
 

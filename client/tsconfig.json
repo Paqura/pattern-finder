@@ -1,0 +1,29 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"outDir": "build",
+    "module": "es2015",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+		"strictNullChecks": true,
+		"paths": {
+			"Components/*": ["src/components/*"],
+			"Typedefs/*": ["src/typedefs/*"],
+			"Ducks/*": ["src/ducks/*"],
+			"Reducers/*": ["src/reducers/*"],
+			"Store/*": ["src/store/*"],
+		},
+	},
+	"include": [
+		"src/**/*"
+	],
+	"exclude":[
+		"node_modules"
+	],
+}

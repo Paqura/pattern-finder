@@ -1,17 +1,18 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
-const content = require('./logotype.svg');
-import Icon from '../../Icon';
+import {Logo} from 'Components/shared/Vectors/index';
 
 const Logotype = () => {
 	return(
-		<Link to="/">
-			<Icon
-				imagePath={content}
-				alt={'Empty'}
-			/>
-			<h1>patter finder</h1>
-		</Link>
+		<div>
+			<Link to="/">
+				<Logo
+					width={40}
+					height={40}
+				/>
+				<h1>patter finder</h1>
+			</Link>
+		</div>
 	);
 };
 

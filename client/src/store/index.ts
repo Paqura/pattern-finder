@@ -1,5 +1,5 @@
 import {applyMiddleware, createStore} from 'redux';
-import rootReducer from '../reducers';
+import rootReducer from 'Reducers/index';
 import createBrowserHistory from 'history/createBrowserHistory';
 import logger from 'redux-logger';
 

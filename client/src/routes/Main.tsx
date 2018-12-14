@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Layout from '../components/shared/Layout';
+import Layout from 'Components/shared/Layout/index';
 
 const Main = () => {
 	return(
