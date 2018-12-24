@@ -1,15 +1,19 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 type ContainerProps = {
 	children: any;
 };
 
-const Container = (props: ContainerProps) => {
+const Container = styled.div`
+	max-width: 1020px;
+	margin: 0 auto;
+`;
+
+export default (props: ContainerProps) => {
 	return(
-		<div>
+		<Container>
 			{props.children}
-		</div>
+		</Container>
 	);
 };
-
-export default Container;

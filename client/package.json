@@ -25,6 +25,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"axios": "^0.18.0",
 		"history": "^4.7.2",
 		"lodash": "^4.17.11",
 		"react": "^16.6.3",
@@ -36,12 +37,14 @@
 		"recompose": "^0.30.0",
 		"redux": "^4.0.1",
 		"redux-logger": "^3.0.6",
-		"styled-components": "^4.1.2"
+		"styled-components": "^4.1.2",
+		"styled-normalize": "^8.0.4"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.0",
 		"@babel/preset-env": "^7.2.0",
 		"@babel/preset-react": "^7.0.0",
+		"@types/axios": "^0.14.0",
 		"@types/node": "^10.12.12",
 		"@types/react": "^16.7.13",
 		"@types/react-dom": "^16.0.11",

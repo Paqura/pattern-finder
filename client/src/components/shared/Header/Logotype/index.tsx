@@ -28,8 +28,8 @@ const Logotype = () => {
 	return(
 		<Link to="/" style={LinkStyle}>
 			<Logo
-				width={40}
-				height={40}
+				width={32}
+				height={32}
 			/>
 			<LogoText>Pattern finder</LogoText>
 		</Link>

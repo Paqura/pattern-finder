@@ -5,6 +5,7 @@ import {ThemeProvider} from 'styled-components';
 import store, {history} from 'Store/index';
 import {ConnectedRouter} from 'react-router-redux';
 import Root from './routes/Root';
+import {Normalize} from 'styled-normalize';
 
 import theme from './theme/index';
 
@@ -14,7 +15,10 @@ const App = () => {
 			<Provider store={store}>
 				<ConnectedRouter history={history}>
 					<Router>
-						<Root />
+						<React.Fragment>
+							<Normalize />
+							<Root />
+						</React.Fragment>
 					</Router>
 				</ConnectedRouter>
 			</Provider>
