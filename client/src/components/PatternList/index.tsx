@@ -4,7 +4,7 @@ import {compose, withState, lifecycle} from 'recompose';
 import axios from 'axios';
 import styled from 'styled-components';
 
-const Patterns = styled.ul`
+const List = styled.ul`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-gap: 16px;
@@ -12,15 +12,18 @@ const Patterns = styled.ul`
 
 const PatternList = (props: {
 	patterns: Array<Object>,
-}) => <Patterns>
+}) => <List>
 	{props.patterns.map((pattern: any) => (
-		<Item pattern={pattern} />
+		<Item 
+			key={pattern.id} 
+			pattern={pattern} 
+		/>
 	))}
-</Patterns>;
+</List>;
 
 export default compose<any, any>(
 	withState('patterns', 'setPatterns', []),
-	
+
 	lifecycle<any, any>({
 		async componentDidMount() {
 			const patterns = await axios.get('https://jsonplaceholder.typicode.com/photos');

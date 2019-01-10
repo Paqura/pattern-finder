@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"outDir": "build",
-    "module": "es2015",
+    "module": "esNext",
     "target": "es5",
     "lib": ["es6", "dom"],
     "sourceMap": true,
