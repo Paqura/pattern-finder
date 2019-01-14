@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import {HashRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import {ThemeProvider} from 'styled-components';
 import store, {history} from 'Store/index';
 import {ConnectedRouter} from 'react-router-redux';

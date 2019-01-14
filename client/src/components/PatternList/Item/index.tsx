@@ -1,21 +1,15 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
-import styled from 'styled-components';
+import {TEMPORARY_PATTERNS_PATH} from 'Settings';
 
-const Pic = styled.img`
-	max-width: 100%;
-	height: auto;
-`;
+import {Pic} from './styles';
 
 const
 	Item = (props: {
-		pattern: {
-			id: string,
-			url: string,
-		},
-	}) => <Link to={`/details/${props.pattern.id}`}>
-		<div key={props.pattern.id}>
-			<Pic src={props.pattern.url} />
+		id: number,
+	}) => <Link to={`/details/${props.id}`}>
+		<div key={props.id}>
+			<Pic src={`${TEMPORARY_PATTERNS_PATH}${props.id}.svg`} />
 		</div>
 	</Link>;
 

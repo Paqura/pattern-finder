@@ -1,0 +1,1 @@
+export {TPattern} from './TPattern';

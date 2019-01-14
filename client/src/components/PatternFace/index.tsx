@@ -1,14 +1,12 @@
 import * as React from 'react';
+import {TEMPORARY_PATTERNS_PATH} from 'Settings';
 
 const
 	PatternFace = (props: {
-		data: {
-			title: string,
-			url: string,
-		} | null,
-	}) => props.data && <React.Fragment>
-	<h3>{props.data.title}</h3>
-	<img src={props.data.url} alt={props.data.title} />
+		id: string,
+	}) => <React.Fragment>
+	<h3>Temporary title</h3>
+	<img src={`${TEMPORARY_PATTERNS_PATH}${props.id}.svg`} alt={''} />
 </React.Fragment>;
 
 export default PatternFace;

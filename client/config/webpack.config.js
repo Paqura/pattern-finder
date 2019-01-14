@@ -127,6 +127,7 @@ module.exports = {
 			'Store': path.resolve(__dirname, '..', 'src/store'),
 			'Reducers': path.resolve(__dirname, '..', 'src/reducers'),
 			'Typedefs': path.resolve(__dirname, '..', 'src/typedefs'),
+			'Settings': path.resolve(__dirname, '..', 'src/settings'),
 		},
 
 		extensions: ['.ts', '.tsx', '.js', '.json'],
