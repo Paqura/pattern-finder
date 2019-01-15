@@ -10,5 +10,5 @@ export const List = styled.ul`
 	list-style-type: none;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-gap: 16px;
+	grid-gap: 8px;
 `;

@@ -1,8 +1,11 @@
 import * as React from 'react';
-import Layout from 'Components/shared/Layout/index';
 import PatternList from 'Components/PatternList/index';
+import Container from 'Components/shared/Container/index';
 
 const
-	Main = () => <PatternList />;
+	Main = () =>
+	<Container>
+		<PatternList />
+	</Container>;
 
 export default Main;

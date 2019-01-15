@@ -8,6 +8,7 @@
 			"object-curly-spacing": [true, "never"],
 			"import-name": false,
 			"variable-name": false,
-			"max-line-length": [true, 140]
+			"max-line-length": [true, 140],
+			"one-variable-per-declaration": false,
 		}
 	}

@@ -8,7 +8,7 @@ const
 	Item = (props: {
 		id: number,
 	}) => <Link to={`/details/${props.id}`}>
-		<div key={props.id}>
+		<div>
 			<Pic src={`${TEMPORARY_PATTERNS_PATH}${props.id}.svg`} />
 		</div>
 	</Link>;
