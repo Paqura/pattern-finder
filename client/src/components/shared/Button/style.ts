@@ -14,6 +14,7 @@ export const Button: any = styled.button`
 	transition: all 0.2s ease-in-out;
 	cursor: pointer;
 	text-decoration: none;
+	width: ${(props: {width?: string}) => props.width === 'full' && '100%'};
 
 	&:hover {
 		color: #111111;
