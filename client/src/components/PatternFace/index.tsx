@@ -29,22 +29,18 @@ const
 						/>
 					</PatternSquare>
 				</MarginBlock>
-
 				<DescriptionBlock>
 					<Header
 						scale={1}
 						title="Temporary title"
 					/>
-
 					<Header
 						scale={2}
 						title="Temporary title"
 					/>
-
 					<Tags />
 				</DescriptionBlock>
 			</PatternGrid>
-
 			<SuggestedPatterns />
 		</Container>
 	</>;
