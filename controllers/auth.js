@@ -25,38 +25,37 @@ module.exports.register = async function(req, res) {
 		} catch(err) {
 			errorHandler(res, err);
 		}
-
-	} else {
+	} else
 		res.status(STATUS.CONFLICT).json({
-			message: MESSAGES.AUTH.EMAIL_IS_EXIST
+			message: MESSAGES.AUTH.EMAIL_IS_EXIST,
 		});
-	}
-}
+};
 
 module.exports.login = async function(req, res) {
 	const candidate = await User.findOne({email: req.body.email});
 
 	if(!candidate) {
 		res.status(STATUS.NOT_FOUND).json({
-			message: MESSAGES.AUTH.EMAIL_NOT_FOUND
+			message: MESSAGES.AUTH.EMAIL_NOT_FOUND,
 		});
 	} else {
 		const resultPasswordMatch = bcrypt.compareSync(req.body.password, candidate.password);
+
 		if(resultPasswordMatch) {
 			const token = jwt.sign({
 				name: candidate.name,
 				email: candidate.email,
 				avatar: candidate.avatar,
-				userId: candidate._id
+				userId: candidate._id,
 			}, keys.jwt, {expiresIn: 60 * 60});
 
 			res.status(STATUS.OK).json({
-				token: `Bearer ${token}`
-			})
+				token: `Bearer ${token}`,
+			});
 		} else {
 			res.status(STATUS.UNAUTHORIZED).json({
-				message: MESSAGES.AUTH.PASSWORD_IS_WRONG
+				message: MESSAGES.AUTH.PASSWORD_IS_WRONG,
 			})
 		}
 	}
-}
+};
