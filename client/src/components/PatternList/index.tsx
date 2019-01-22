@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import Item from './Item/index';
+import {compose, lifecycle} from 'recompose';
 import Button from 'Components/shared/Button/index';
 import MarginBlock from 'Components/shared/MarginBlock/index';
-
+import axios from 'axios';
 import {List, ListWrapper} from './styles';
 
 const PatternList = () =>
@@ -28,4 +29,11 @@ const PatternList = () =>
 		</MarginBlock>
 	</ListWrapper>;
 
-export default PatternList;
+export default compose(
+	lifecycle({
+		async componentDidMount() {
+			const patterns = await axios.get('/api/patterns');
+			console.log(patterns);
+		},
+	}),
+)(PatternList);

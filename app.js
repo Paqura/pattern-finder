@@ -13,11 +13,13 @@ mongoose.connect(keys.MONGO_URI, { useNewUrlParser: true})
 mongoose.set('useCreateIndex', true);
 
 const authRoute = require('./routes/api/auth');
+const patternRoute = require('./routes/api/patterns');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use('/api/auth', authRoute);
+app.use('/api/patterns', patternRoute);
 app.use(compression());
 
 if(process.env.NODE_ENV === 'production') {
