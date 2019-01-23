@@ -32,7 +32,7 @@ const PatternList = () =>
 export default compose(
 	lifecycle({
 		async componentDidMount() {
-			const patterns = await axios.get('/api/patterns');
+			const patterns = await axios.get('gttp://localhost:5000/api');
 			console.log(patterns);
 		},
 	}),
