@@ -1,14 +1,20 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
-import {TEMPORARY_PATTERNS_PATH} from 'Settings';
 import {PatternView, PatternSquare} from './styles';
 
 const
 	Item = (props: {
-		id: number,
-	}) => <Link to={`/details/${props.id}`}>
+		key: number,
+
+		pattern: {
+			_id: string,
+			title: string,
+			imgPath: string,
+		},
+	}) =>
+	<Link to={`/details/${props.pattern._id}`}>
 		<PatternSquare>
-			<PatternView src={`${TEMPORARY_PATTERNS_PATH}${props.id}.svg`} />
+			<PatternView src={props.pattern.imgPath} />
 		</PatternSquare>
 	</Link>;
 

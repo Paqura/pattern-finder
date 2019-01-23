@@ -1,1 +1,1 @@
-export const TEMPORARY_PATTERNS_PATH = 'https://ofb.uz/local/dist/assets/img/patterns/pattern-';
+export const PATH_TO_API = 'https://cors-anywhere.herokuapp.com/https://pattern-finder.herokuapp.com/api';

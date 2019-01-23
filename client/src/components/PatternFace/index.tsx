@@ -3,9 +3,12 @@ import {Header} from 'Components/shared/Typography/index';
 import Container from 'Components/shared/Container/index';
 import MarginBlock from 'Components/shared/MarginBlock/index';
 import Tags from 'Components/shared/Tags/index';
+import axios from 'axios';
 import SuggestedPatterns from 'Components/shared/SuggestedPatterns/index';
-import {TEMPORARY_PATTERNS_PATH} from 'Settings';
+import {PATH_TO_API} from 'Settings/index';
 import {DescriptionBlock, PatterStrip, PatternGrid, PatternSquare, PatternView} from './styles';
+import { lifecycle, compose } from 'recompose';
+import { any } from 'prop-types';
 
 const
 	PatternFace = (props: {
@@ -13,7 +16,7 @@ const
 	}) =>
 	<>
 		<PatterStrip
-			path={`${TEMPORARY_PATTERNS_PATH}${props.id}.svg`}
+			path={``}
 		/>
 		<Container>
 			<PatternGrid>
@@ -24,7 +27,7 @@ const
 				>
 					<PatternSquare>
 						<PatternView
-							src={`${TEMPORARY_PATTERNS_PATH}${props.id}.svg`}
+							src={``}
 							alt={''}
 						/>
 					</PatternSquare>
@@ -45,4 +48,11 @@ const
 		</Container>
 	</>;
 
-export default PatternFace;
+export default compose<any, any>(
+	lifecycle<any, any>({
+		async componentDidMount() {
+			const pattern = await axios.get(`${PATH_TO_API}/patterns/${this.props.id}`);
+			console.log(pattern)
+		},
+	}),
+)(PatternFace);
