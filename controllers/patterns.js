@@ -15,7 +15,7 @@ module.exports.patterns = async function(req, res) {
 
 module.exports.details = async function(req, res) {
 	const pattern = await Pattern.findById(req.params.id);
-	console.log('123')
+
 	if(!pattern) {
 		return res.status(STATUS.NOT_FOUND).json({
 			error: STATUS.NOT_FOUND,

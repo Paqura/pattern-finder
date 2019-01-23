@@ -1,3 +1,5 @@
+import {DescriptionBlock, PatterStrip, PatternGrid, PatternSquare, PatternView} from './styles';
+import {lifecycle, compose, withState, withHandlers} from 'recompose';
 import * as React from 'react';
 import {Header} from 'Components/shared/Typography/index';
 import Container from 'Components/shared/Container/index';
@@ -6,17 +8,20 @@ import Tags from 'Components/shared/Tags/index';
 import axios from 'axios';
 import SuggestedPatterns from 'Components/shared/SuggestedPatterns/index';
 import {PATH_TO_API} from 'Settings/index';
-import {DescriptionBlock, PatterStrip, PatternGrid, PatternSquare, PatternView} from './styles';
-import { lifecycle, compose } from 'recompose';
-import { any } from 'prop-types';
 
 const
 	PatternFace = (props: {
 		id: string,
+
+		pattern: {
+			_id: string,
+			imgPath: string,
+			title: string,
+		},
 	}) =>
-	<>
+	<React.Fragment>
 		<PatterStrip
-			path={``}
+			path={props.pattern.imgPath}
 		/>
 		<Container>
 			<PatternGrid>
@@ -27,8 +32,8 @@ const
 				>
 					<PatternSquare>
 						<PatternView
-							src={``}
-							alt={''}
+							src={props.pattern.imgPath}
+							alt={props.pattern.title}
 						/>
 					</PatternSquare>
 				</MarginBlock>
@@ -46,13 +51,19 @@ const
 			</PatternGrid>
 			<SuggestedPatterns />
 		</Container>
-	</>;
+	</React.Fragment>;
 
 export default compose<any, any>(
+	withState('pattern', 'setPattern', {}),
+
+	withHandlers<any, any>({
+		set: (props: any) => (pattern: any) => props.setPattern(pattern),
+	}),
+
 	lifecycle<any, any>({
 		async componentDidMount() {
 			const pattern = await axios.get(`${PATH_TO_API}/patterns/${this.props.id}`);
-			console.log(pattern)
+			return this.props.set(pattern.data);
 		},
 	}),
 )(PatternFace);
