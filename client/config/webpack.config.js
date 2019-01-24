@@ -125,6 +125,7 @@ module.exports = {
 			'Components': path.resolve(__dirname, '..', 'src/components'),
 			'Ducks': path.resolve(__dirname, '..', 'src/ducks'),
 			'Store': path.resolve(__dirname, '..', 'src/store'),
+			'Sagas': path.resolve(__dirname, '..', 'src/sagas'),
 			'Reducers': path.resolve(__dirname, '..', 'src/reducers'),
 			'Typedefs': path.resolve(__dirname, '..', 'src/typedefs'),
 			'Settings': path.resolve(__dirname, '..', 'src/settings'),

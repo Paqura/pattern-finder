@@ -18,6 +18,7 @@
 			"Ducks/*": ["src/ducks/*"],
 			"Reducers/*": ["src/reducers/*"],
 			"Store/*": ["src/store/*"],
+			"Sagas/*": ["src/sagas/*"],
 			"Settings/*": ["src/settings/index"],
 		},
 	},

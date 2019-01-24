@@ -4,9 +4,9 @@ import Item from './Item/index';
 import {compose, lifecycle, withState, withHandlers} from 'recompose';
 import Button from 'Components/shared/Button/index';
 import MarginBlock from 'Components/shared/MarginBlock/index';
-import axios from 'axios';
-import {PATH_TO_API} from 'Settings/index';
+import {getPatterns, moduleName} from 'Ducks/patterns/index';
 import {List, ListWrapper} from './styles';
+import {connect} from 'react-redux';
 
 const PatternList = (props: {
 	patterns: Array<Object>,
@@ -39,16 +39,19 @@ const PatternList = (props: {
 	</ListWrapper>;
 
 export default compose<any, any>(
-	withState('patterns', 'setPatterns', []),
+	connect(
+		(state: any) => ({
+			error: state[moduleName].error,
+			patterns: state[moduleName].patterns,
+			loading: state[moduleName].loading,
+		}),
 
-	withHandlers<any, any>({
-		set: (props: any) => (patterns: Array<Object>) => props.setPatterns(patterns),
-	}),
+		{getPatterns: getPatterns}
+	),
 
 	lifecycle<any, any>({
 		async componentDidMount() {
-			const patterns = await axios.get(`${PATH_TO_API}/patterns`);
-			return this.props.set(patterns.data.slice(0, 16));
+			this.props.getPatterns();
 		},
 	}),
 )(PatternList);
