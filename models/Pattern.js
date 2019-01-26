@@ -11,6 +11,13 @@ const patternSchema = new Schema({
 		type: String,
 		required: true,
 	},
+
+	tags: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'tags',
+		},
+	],
 });
 
 module.exports = mongoose.model('patterns', patternSchema);
