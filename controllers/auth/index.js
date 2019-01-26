@@ -1,10 +1,10 @@
-const User = require('../models/User');
+const User = require('../../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const keys = require('../settings/keys');
-const STATUS = require('../settings/http-status');
-const MESSAGES = require('../settings/messages');
-const errorHandler = require('../utils/error-handler');
+const keys = require('../../settings/keys');
+const STATUS = require('../../settings/http-status');
+const MESSAGES = require('../../settings/messages');
+const errorHandler = require('../../utils/error-handler');
 
 module.exports.register = async function(req, res) {
 	const candidate = await User.findOne({ email: req.body.email });
