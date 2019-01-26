@@ -96,6 +96,9 @@ export const reducer = (state: any = initialState, action: any) => {
 
 		case ACTION_TYPES.GET_PATTERNS_SUCCESS:
 		case ACTION_TYPES.GET_LAZY_PATTERNS_SUCCESS:
+			if(state.isLoaded || _.isEqual(state.patterns, payload.patterns))
+				return state;
+
 			return {
 				...state,
 
