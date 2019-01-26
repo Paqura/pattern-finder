@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, withRouter} from 'react-router-dom';
 import LoadingBar from 'react-redux-loading-bar'
 import Main from './Main';
 import Details from './Details';
@@ -19,9 +19,9 @@ const
 				<React.Fragment>
 					<LoadingBar style={LoadingBarStyle} />
 					<Layout>
-						<Switch location={location}>
+						<Switch>
 							<Route exact path="/" component={Main} />
-							<Route exact path="/details/:id" component={Details} />
+							<Route path="/details/:id" component={Details} />
 						</Switch>
 					</Layout>
 				</React.Fragment>

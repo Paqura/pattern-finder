@@ -1,7 +1,9 @@
 import * as React from 'react';
 import Item from './Item/index';
-
+import {compose, lifecycle, pure} from 'recompose';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { getSuggested, moduleName } from 'Ducks/suggested/index';
 
 export const
 	List = styled.ul`
@@ -13,24 +15,33 @@ export const
 	`;
 
 const
-	fakeData = [
-		{id: '16'},
-		{id: '2'},
-		{id: '31'},
-		{id: '41'},
-	];
-
-const
 	SuggestedPatterns = (props: {
-
+		suggested: Array<Object>,
+		loading: boolean,
 	}) =>
 	<List>
-		{fakeData.map(pattern => (
+		{props.suggested && props.suggested.map((pattern: any) => (
 			<Item
-				key={pattern.id}
-				patternID={pattern.id}
+				key={pattern._id}
+				pattern={pattern}
 			/>
 		))}
 	</List>;
 
-export default SuggestedPatterns;
+export default compose<any, any>(
+	connect(
+		(state: any) => ({
+			suggested: state[moduleName].suggested,
+			loading:  state[moduleName].loading,
+			error:  state[moduleName].error,
+		}),
+
+		{getSuggested: getSuggested},
+	),
+
+	lifecycle<any, any>({
+		componentDidMount() {
+			this.props.getSuggested();
+		},
+	}),
+)(SuggestedPatterns);

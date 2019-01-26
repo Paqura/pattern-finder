@@ -5,16 +5,17 @@ import {Item, LinkStyle} from './style';
 
 const
 	SuggestedPattern = (props: {
-		patternID: string,
+		pattern: {
+			_id: string,
+			imgPath: string,
+		},
 	}) =>
 	<MarginBlock
 		right={16}
 	>
-		{/* <Item path={`${TEMPORARY_PATTERNS_PATH}${props.patternID}.svg`}>
-			<Link to={`${props.patternID}`} style={LinkStyle} />
-		</Item> */}
-
-		hello
+		<Item path={props.pattern.imgPath}>
+			<Link to={`${props.pattern._id}`} style={LinkStyle} />
+		</Item>
 	</MarginBlock>;
 
 export default SuggestedPattern;

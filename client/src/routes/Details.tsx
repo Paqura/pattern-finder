@@ -1,8 +1,7 @@
 import * as React from 'react';
 import PatternFace from 'Components/PatternFace/index';
 
-const
-	DetailsPage = (props: {
+export default (props: {
 		match: {
 			params: {
 				id: string,
@@ -10,4 +9,3 @@ const
 		},
 	}) => <PatternFace id={props.match.params.id} />;
 
-export default DetailsPage;

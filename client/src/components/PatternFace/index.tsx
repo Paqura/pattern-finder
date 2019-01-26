@@ -71,8 +71,6 @@ const
 						<SwishLoader show={props.loading} />
 					</Centered>
 			}
-
-
 	</React.Fragment>;
 
 export default compose<any, any>(
@@ -90,5 +88,10 @@ export default compose<any, any>(
 		componentDidMount() {
 			this.props.getPattern(this.props.id);
 		},
+
+		componentDidUpdate(prevProps) {
+			if(prevProps.id !== this.props.id)
+				this.props.getPattern(this.props.id);
+		}
 	}),
 )(PatternFace);

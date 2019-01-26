@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import Item from './Item/index';
-import {compose, lifecycle} from 'recompose';
+import {compose, lifecycle, pure} from 'recompose';
 import Button from 'Components/shared/Button/index';
 import MarginBlock from 'Components/shared/MarginBlock/index';
 import {getPatterns, getLazyPatterns, moduleName} from 'Ducks/patterns/index';
@@ -66,4 +66,6 @@ export default compose<any, any>(
 			this.props.getPatterns();
 		},
 	}),
+
+	pure,
 )(PatternList);
