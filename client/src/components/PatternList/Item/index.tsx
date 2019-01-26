@@ -12,10 +12,12 @@ const
 			imgPath: string,
 		},
 	}) =>
-	<Link to={`/details/${props.pattern._id}`}>
-		<PatternSquare>
-			<PatternView src={props.pattern.imgPath} />
-		</PatternSquare>
-	</Link>;
+	<li>
+		<Link to={`/details/${props.pattern._id}`}>
+			<PatternSquare>
+				<PatternView src={props.pattern.imgPath} />
+			</PatternSquare>
+		</Link>
+	</li>;
 
 export default Item;

@@ -7,9 +7,11 @@ import MarginBlock from 'Components/shared/MarginBlock/index';
 import {getPatterns, moduleName} from 'Ducks/patterns/index';
 import {List, ListWrapper} from './styles';
 import {connect} from 'react-redux';
+import Loading from 'Components/shared/Loading/index';
 
 const PatternList = (props: {
 	patterns: Array<Object>,
+	loading: boolean,
 }) =>
 	<ListWrapper>
 		<List>
@@ -22,7 +24,7 @@ const PatternList = (props: {
 							/>
 						))
 
-					: <span>Loading...</span>}
+					: <Loading show={props.loading} />}
 		</List>
 
 		<MarginBlock

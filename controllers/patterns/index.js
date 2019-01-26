@@ -5,7 +5,9 @@ const MESSAGES = require('../../settings/messages');
 const errorHandler = require('../../utils/error-handler');
 
 module.exports.patterns = async function(req, res) {
-	const patterns = await Pattern.find();
+	const patterns = await Pattern
+		.find()
+		.limit(+req.query.limit);
 
 	if(!patterns)
 		return res.status(STATUS.NOT_FOUND).json({

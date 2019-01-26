@@ -1,4 +1,5 @@
 import {all, call, put, takeEvery} from 'redux-saga/effects';
+import {showLoading, hideLoading} from 'react-redux-loading-bar';
 import axios from 'axios';
 import {PATH_TO_API} from 'Settings/index';
 
@@ -16,6 +17,7 @@ export const getPatterns = () => ({
 
 export const getPatternsSaga = function* (action: any): any {
 	try {
+		yield put(showLoading());
 		const patterns = yield call(axios.get, `${PATH_TO_API}/patterns`);
 
 		yield put({
@@ -27,6 +29,8 @@ export const getPatternsSaga = function* (action: any): any {
 			type: ACTION_TYPES.GET_PATTERNS_FAILURE,
 			payload: error.message,
 		});
+	} finally {
+		yield put(hideLoading());
 	}
 };
 

@@ -3,11 +3,13 @@ import {lifecycle, compose, withState, withHandlers} from 'recompose';
 import * as React from 'react';
 import {Header} from 'Components/shared/Typography/index';
 import Container from 'Components/shared/Container/index';
+import Button from 'Components/shared/Button/index';
 import MarginBlock from 'Components/shared/MarginBlock/index';
 import Tags from 'Components/shared/Tags/index';
-import axios from 'axios';
+import {connect} from 'react-redux';
 import SuggestedPatterns from 'Components/shared/SuggestedPatterns/index';
-import {PATH_TO_API} from 'Settings/index';
+import {getPattern, moduleName} from 'Ducks/details/index';
+import Loading from 'Components/shared/Loading/index';
 
 const
 	PatternFace = (props: {
@@ -18,8 +20,17 @@ const
 			imgPath: string,
 			title: string,
 		},
+
+		isEditMode?: boolean,
+		loading: boolean,
 	}) =>
 	<React.Fragment>
+		{props.isEditMode &&
+			<Button
+				text="Edit"
+				hasBorder
+			/>}
+
 		<PatterStrip
 			path={props.pattern.imgPath}
 		/>
@@ -40,30 +51,35 @@ const
 				<DescriptionBlock>
 					<Header
 						scale={1}
-						title="Temporary title"
+						title={props.pattern.title}
 					/>
 					<Header
 						scale={2}
-						title="Temporary title"
+						title={props.pattern.title}
 					/>
 					<Tags />
 				</DescriptionBlock>
 			</PatternGrid>
 			<SuggestedPatterns />
 		</Container>
+
+		<Loading show={props.loading} />
 	</React.Fragment>;
 
 export default compose<any, any>(
-	withState('pattern', 'setPattern', {}),
+	connect(
+		(state: any) => ({
+			pattern: state[moduleName].pattern,
+			error: state[moduleName].error,
+			loading: state[moduleName].loading,
+		}),
 
-	withHandlers<any, any>({
-		set: (props: any) => (pattern: any) => props.setPattern(pattern),
-	}),
+		{getPattern: getPattern},
+	),
 
-	lifecycle<any, any>({
-		async componentDidMount() {
-			const pattern = await axios.get(`${PATH_TO_API}/patterns/${this.props.id}`);
-			return this.props.set(pattern.data);
+	lifecycle<{getPattern: (id: string) => void, id: string}, null>({
+		componentDidMount() {
+			this.props.getPattern(this.props.id);
 		},
 	}),
 )(PatternFace);
