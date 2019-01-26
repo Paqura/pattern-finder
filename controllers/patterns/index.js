@@ -7,6 +7,7 @@ const errorHandler = require('../../utils/error-handler');
 module.exports.patterns = async function(req, res) {
 	const patterns = await Pattern
 		.find()
+		.skip(+req.query.offset)
 		.limit(+req.query.limit);
 
 	if(!patterns)
