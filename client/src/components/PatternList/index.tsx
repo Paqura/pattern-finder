@@ -7,7 +7,9 @@ import MarginBlock from 'Components/shared/MarginBlock/index';
 import {getPatterns, getLazyPatterns, moduleName} from 'Ducks/patterns/index';
 import {List, ListWrapper} from './styles';
 import {connect} from 'react-redux';
-import Loading from 'Components/shared/Loading/index';
+import {Swish} from 'Components/shared/Loading/index';
+import Centered from 'Components/shared/Centered/index';
+import LoadMore from './LoadMore/index';
 
 const PatternList = (props: {
 	getLazyPatterns: () => void,
@@ -19,26 +21,29 @@ const PatternList = (props: {
 		<List>
 			{!_.isEmpty(props.patterns)
 
-					? props.patterns.map((pattern: any) => (
-							<Item
-								key={pattern._id}
-								pattern={pattern}
-							/>
-						))
-
-					: <Loading show={props.loading} />}
+				&& props.patterns.map((pattern: any) => (
+						<Item
+							key={pattern._id}
+							pattern={pattern}
+						/>
+					))}
 		</List>
 
-		{!props.isLoaded && <MarginBlock
-			top={12}
+		<MarginBlock
+			top={16}
+			bottom={16}
 		>
-			<Button
-				text="Load more"
-				hasBorder
-				width="full"
-				handler={props.getLazyPatterns}
-			/>
-		</MarginBlock>}
+			<Centered>
+				<Swish show={props.loading} />
+			</Centered>
+		</MarginBlock>
+
+		{!props.isLoaded &&
+				<LoadMore
+					text="Load more"
+					handler={props.getLazyPatterns}
+					disabled={props.loading}
+				/>}
 	</ListWrapper>;
 
 export default compose<any, any>(

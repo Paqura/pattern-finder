@@ -118,7 +118,7 @@ module.exports = {
 		}),
 
 		!isProduction ? new ProgressBarPlugin({clear: false}) : null,
-	],
+	].filter(i => Boolean(i)),
 
 	resolve: {
 		alias: {

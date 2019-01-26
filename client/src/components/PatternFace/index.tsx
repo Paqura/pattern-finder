@@ -9,7 +9,8 @@ import Tags from 'Components/shared/Tags/index';
 import {connect} from 'react-redux';
 import SuggestedPatterns from 'Components/shared/SuggestedPatterns/index';
 import {getPattern, moduleName} from 'Ducks/details/index';
-import Loading from 'Components/shared/Loading/index';
+import {Swish as SwishLoader} from 'Components/shared/Loading/index';
+import Centered from 'Components/shared/Centered/index';
 
 const
 	PatternFace = (props: {
@@ -31,39 +32,47 @@ const
 				hasBorder
 			/>}
 
-		<PatterStrip
-			path={props.pattern.imgPath}
-		/>
-		<Container>
-			<PatternGrid>
-				<MarginBlock
-					top={-30}
-					left={30}
-					right={30}
-				>
-					<PatternSquare>
-						<PatternView
-							src={props.pattern.imgPath}
-							alt={props.pattern.title}
+			{!props.loading
+				? <React.Fragment>
+						<PatterStrip
+							path={props.pattern.imgPath}
 						/>
-					</PatternSquare>
-				</MarginBlock>
-				<DescriptionBlock>
-					<Header
-						scale={1}
-						title={props.pattern.title}
-					/>
-					<Header
-						scale={2}
-						title={props.pattern.title}
-					/>
-					<Tags />
-				</DescriptionBlock>
-			</PatternGrid>
-			<SuggestedPatterns />
-		</Container>
+						<Container>
+							<PatternGrid>
+								<MarginBlock
+									top={-30}
+									left={30}
+									right={30}
+								>
+									<PatternSquare>
+										<PatternView
+											src={props.pattern.imgPath}
+											alt={props.pattern.title}
+										/>
+									</PatternSquare>
+								</MarginBlock>
+								<DescriptionBlock>
+									<Header
+										scale={1}
+										title={props.pattern.title}
+									/>
+									<Header
+										scale={2}
+										title={props.pattern.title}
+									/>
+									<Tags />
+								</DescriptionBlock>
+							</PatternGrid>
+							<SuggestedPatterns />
+						</Container>
+					</React.Fragment>
 
-		<Loading show={props.loading} />
+				: <Centered hasAbsolute>
+						<SwishLoader show={props.loading} />
+					</Centered>
+			}
+
+
 	</React.Fragment>;
 
 export default compose<any, any>(

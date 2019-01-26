@@ -3,4 +3,5 @@ declare module 'axios';
 declare module 'redux-saga';
 declare module 'redux-saga/effects';
 declare module 'react-redux-loading-bar';
+declare module 'react-spinners-kit';
 declare module 'Settings';

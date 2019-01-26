@@ -7,7 +7,7 @@ import Layout from 'Components/shared/Layout/index';
 
 export const
 	LoadingBarStyle = {
-		backgroundColor: '#ffc4ff',
+		backgroundColor: '#e6feff',
 		height: '4px',
 		zIndex: 100,
 	};

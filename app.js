@@ -15,6 +15,7 @@ mongoose.set('useCreateIndex', true);
 const authRoute = require('./routes/api/auth');
 const patternRoute = require('./routes/api/patterns');
 const tagRoute = require('./routes/api/tags');
+const suggestedRoute= require('./routes/api/suggested');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 app.use('/api/auth', authRoute);
 app.use('/api/patterns', patternRoute);
 app.use('/api/tags', tagRoute);
+app.use('/api/suggested', suggestedRoute);
 app.use(compression());
 
 if(process.env.NODE_ENV === 'production') {
