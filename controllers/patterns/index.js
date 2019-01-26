@@ -15,7 +15,15 @@ module.exports.patterns = async function(req, res) {
 			status: STATUS.NOT_FOUND,
 		});
 
-	return res.status(STATUS.OK).json(patterns);
+		Pattern
+			.estimatedDocumentCount()
+			.then(count => {
+				res.status(STATUS.OK).json({patterns, count});
+			})
+			.catch(err => {
+				// сюда не дойдёт
+				console.log(err);
+			})
 };
 
 module.exports.details = async function(req, res) {

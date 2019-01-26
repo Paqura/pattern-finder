@@ -1,15 +1,16 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import Item from './Item/index';
-import {compose, lifecycle, withState, withHandlers} from 'recompose';
+import {compose, lifecycle} from 'recompose';
 import Button from 'Components/shared/Button/index';
 import MarginBlock from 'Components/shared/MarginBlock/index';
-import {getPatterns, moduleName} from 'Ducks/patterns/index';
+import {getPatterns, getLazyPatterns, moduleName} from 'Ducks/patterns/index';
 import {List, ListWrapper} from './styles';
 import {connect} from 'react-redux';
 import Loading from 'Components/shared/Loading/index';
 
 const PatternList = (props: {
+	getLazyPatterns: () => void,
 	patterns: Array<Object>,
 	loading: boolean,
 }) =>
@@ -34,6 +35,7 @@ const PatternList = (props: {
 				text="Load more"
 				hasBorder
 				width="full"
+				handler={props.getLazyPatterns}
 			/>
 		</MarginBlock>
 	</ListWrapper>;
@@ -46,7 +48,10 @@ export default compose<any, any>(
 			loading: state[moduleName].loading,
 		}),
 
-		{getPatterns: getPatterns}
+		{
+			getPatterns: getPatterns,
+			getLazyPatterns: getLazyPatterns,
+		}
 	),
 
 	lifecycle<any, any>({

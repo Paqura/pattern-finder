@@ -2,13 +2,9 @@ import {all, call, put, takeEvery} from 'redux-saga/effects';
 import axios from 'axios';
 import {PATH_TO_API} from 'Settings/index';
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
+import {TAction} from 'Typedefs/IAction';
 
 export const moduleName = 'details';
-
-type TAction = {
-	type: string,
-	payload?: any,
-};
 
 export const ACTION_TYPES = {
 	GET_PATTERN_REQUEST: 'GET_PATTERN_REQUEST',

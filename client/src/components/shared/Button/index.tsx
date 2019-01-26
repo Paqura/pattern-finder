@@ -6,10 +6,12 @@ const ButtonComponent = (props: {
 	text: string,
 	hasBorder?: boolean,
 	style?: Object,
+	handler?: Function,
 }) => <Button
 		hasBorder={props.hasBorder}
 		style={props.style}
 		width={props.width}
+		onClick={props.handler}
 	>
 		{props.text}
 	</Button>;
