@@ -1,7 +1,7 @@
 import {all, call, put, select, takeEvery} from 'redux-saga/effects';
-import * as _ from 'lodash';
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
 import axios from 'axios';
+import * as _ from 'lodash';
 import {PATH_TO_API} from 'Settings/index';
 import {TAction} from 'Typedefs/IAction';
 
@@ -78,8 +78,10 @@ const initialState = {
 	offset: 0,
 	limit: 16,
 	patterns: [],
+	totalCount: 0,
 	error: null,
 	loading: false,
+	isLoaded: false,
 };
 
 export const reducer = (state: any = initialState, action: any) => {
@@ -97,11 +99,13 @@ export const reducer = (state: any = initialState, action: any) => {
 			return {
 				...state,
 
-				patterns: _.uniqBy([
+				patterns: [
 					...state.patterns,
-					...payload,
-				], '_id'),
+					...payload.patterns,
+				],
 
+				totalCount: payload.count,
+				isLoaded: Object.keys(payload.patterns).length < state.limit,
 				error: null,
 				loading: false,
 			};

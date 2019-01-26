@@ -16,7 +16,7 @@ export const Button: any = styled.button`
 	text-decoration: none;
 	width: ${(props: {width?: string}) => props.width === 'full' && '100%'};
 
-	&:hover {
+	&:hover:not(:disabled) {
 		color: #111111;
 	}
 `;

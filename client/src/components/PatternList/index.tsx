@@ -13,6 +13,7 @@ const PatternList = (props: {
 	getLazyPatterns: () => void,
 	patterns: Array<Object>,
 	loading: boolean,
+	isLoaded: boolean,
 }) =>
 	<ListWrapper>
 		<List>
@@ -28,7 +29,7 @@ const PatternList = (props: {
 					: <Loading show={props.loading} />}
 		</List>
 
-		<MarginBlock
+		{!props.isLoaded && <MarginBlock
 			top={12}
 		>
 			<Button
@@ -37,7 +38,7 @@ const PatternList = (props: {
 				width="full"
 				handler={props.getLazyPatterns}
 			/>
-		</MarginBlock>
+		</MarginBlock>}
 	</ListWrapper>;
 
 export default compose<any, any>(
@@ -46,6 +47,7 @@ export default compose<any, any>(
 			error: state[moduleName].error,
 			patterns: state[moduleName].patterns,
 			loading: state[moduleName].loading,
+			isLoaded: state[moduleName].isLoaded,
 		}),
 
 		{
