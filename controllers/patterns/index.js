@@ -8,7 +8,7 @@ module.exports.patterns = async function(req, res) {
 	const patterns = await Pattern
 		.find()
 		.skip(+req.query.offset)
-		.limit(+req.query.limit);
+		.limit(+req.query.limit || 16);
 
 	if(!patterns)
 		return res.status(STATUS.NOT_FOUND).json({
