@@ -13,8 +13,7 @@ const PatternList = (props: {
 }) =>
 	<ListWrapper>
 		<List>
-			{
-				!_.isEmpty(props.patterns)
+			{!_.isEmpty(props.patterns)
 
 					? props.patterns.map((pattern: any) => (
 							<Item
@@ -23,8 +22,7 @@ const PatternList = (props: {
 							/>
 						))
 
-					: <span>Loading...</span>
-			}
+					: <span>Loading...</span>}
 		</List>
 
 		<MarginBlock
@@ -33,7 +31,7 @@ const PatternList = (props: {
 			<Button
 				text="Load more"
 				hasBorder
-				width={'full'}
+				width="full"
 			/>
 		</MarginBlock>
 	</ListWrapper>;
