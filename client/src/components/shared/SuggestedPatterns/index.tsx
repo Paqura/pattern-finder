@@ -2,8 +2,8 @@ import * as React from 'react';
 import Item from './Item/index';
 import {compose, lifecycle, pure} from 'recompose';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { getSuggested, moduleName } from 'Ducks/suggested/index';
+import {connect} from 'react-redux';
+import {getSuggested, moduleName} from 'Ducks/suggested/index';
 
 export const
 	List = styled.ul`
@@ -16,7 +16,7 @@ export const
 
 const
 	SuggestedPatterns = (props: {
-		suggested: Array<Object>,
+		suggested: [Object],
 		loading: boolean,
 	}) =>
 	<List>
@@ -36,7 +36,7 @@ export default compose<any, any>(
 			error:  state[moduleName].error,
 		}),
 
-		{getSuggested: getSuggested},
+		{getSuggested},
 	),
 
 	lifecycle<any, any>({

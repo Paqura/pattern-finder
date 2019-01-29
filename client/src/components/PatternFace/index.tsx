@@ -1,5 +1,5 @@
 import {DescriptionBlock, PatterStrip, PatternGrid, PatternSquare, PatternView} from './styles';
-import {lifecycle, compose, withState, withHandlers} from 'recompose';
+import {lifecycle, compose} from 'recompose';
 import * as React from 'react';
 import {Header} from 'Components/shared/Typography/index';
 import Container from 'Components/shared/Container/index';
@@ -34,16 +34,10 @@ const
 
 			{!props.loading
 				? <React.Fragment>
-						<PatterStrip
-							path={props.pattern.imgPath}
-						/>
+						<PatterStrip path={props.pattern.imgPath} />
 						<Container>
 							<PatternGrid>
-								<MarginBlock
-									top={-30}
-									left={30}
-									right={30}
-								>
+								<MarginBlock top={-30} left={30} right={30}>
 									<PatternSquare>
 										<PatternView
 											src={props.pattern.imgPath}
@@ -51,18 +45,14 @@ const
 										/>
 									</PatternSquare>
 								</MarginBlock>
+
 								<DescriptionBlock>
-									<Header
-										scale={1}
-										title={props.pattern.title}
-									/>
-									<Header
-										scale={2}
-										title={props.pattern.title}
-									/>
+									<Header scale={1} title={props.pattern.title} />
+									<Header scale={2} title={props.pattern.title} />
 									<Tags />
 								</DescriptionBlock>
 							</PatternGrid>
+
 							<SuggestedPatterns />
 						</Container>
 					</React.Fragment>
@@ -81,7 +71,7 @@ export default compose<any, any>(
 			loading: state[moduleName].loading,
 		}),
 
-		{getPattern: getPattern},
+		{getPattern},
 	),
 
 	lifecycle<{getPattern: (id: string) => void, id: string}, null>({

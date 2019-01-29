@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import Item from './Item/index';
 import {compose, lifecycle, pure} from 'recompose';
-import Button from 'Components/shared/Button/index';
 import MarginBlock from 'Components/shared/MarginBlock/index';
 import {getPatterns, getLazyPatterns, moduleName} from 'Ducks/patterns/index';
 import {List, ListWrapper} from './styles';
@@ -13,7 +12,7 @@ import LoadMore from './LoadMore/index';
 
 const PatternList = (props: {
 	getLazyPatterns: () => void,
-	patterns: Array<Object>,
+	patterns: [Object],
 	loading: boolean,
 	isLoaded: boolean,
 }) =>
@@ -29,10 +28,7 @@ const PatternList = (props: {
 					))}
 		</List>
 
-		<MarginBlock
-			top={16}
-			bottom={16}
-		>
+		<MarginBlock top={props.loading ? 16 : 0} bottom={16}>
 			<Centered>
 				<Swish show={props.loading} />
 			</Centered>
@@ -56,13 +52,13 @@ export default compose<any, any>(
 		}),
 
 		{
-			getPatterns: getPatterns,
-			getLazyPatterns: getLazyPatterns,
-		}
+			getPatterns,
+			getLazyPatterns,
+		},
 	),
 
 	lifecycle<any, any>({
-		async componentDidMount() {
+		componentDidMount() {
 			this.props.getPatterns();
 		},
 	}),

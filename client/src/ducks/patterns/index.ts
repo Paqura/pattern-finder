@@ -86,41 +86,42 @@ const initialState = {
 
 export const reducer = (state: any = initialState, action: any) => {
 	const {type, payload} = action;
+
 	switch(type) {
-		case ACTION_TYPES.GET_PATTERNS_REQUEST:
-		case ACTION_TYPES.GET_LAZY_PATTERNS_REQUEST:
-			return {
-				...state,
-				loading: true,
-			};
+	case ACTION_TYPES.GET_PATTERNS_REQUEST:
+	case ACTION_TYPES.GET_LAZY_PATTERNS_REQUEST:
+		return {
+			...state,
+			loading: true,
+		};
 
-		case ACTION_TYPES.GET_PATTERNS_SUCCESS:
-		case ACTION_TYPES.GET_LAZY_PATTERNS_SUCCESS:
-			if(state.isLoaded || _.isEqual(state.patterns, payload.patterns))
-				return {...state, loading: false};
+	case ACTION_TYPES.GET_PATTERNS_SUCCESS:
+	case ACTION_TYPES.GET_LAZY_PATTERNS_SUCCESS:
+		if(state.isLoaded || _.isEqual(state.patterns, payload.patterns))
+			return {...state, loading: false};
 
-			return {
-				...state,
+		return {
+			...state,
 
-				patterns: [
-					...state.patterns,
-					...payload.patterns,
-				],
+			patterns: [
+				...state.patterns,
+				...payload.patterns,
+			],
 
-				totalCount: payload.count,
-				isLoaded: Object.keys(payload.patterns).length < state.limit,
-				error: null,
-				loading: false,
-			};
+			totalCount: payload.count,
+			isLoaded: Object.keys(payload.patterns).length < state.limit,
+			error: null,
+			loading: false,
+		};
 
-		case ACTION_TYPES.GET_PATTERNS_FAILURE:
-		case ACTION_TYPES.GET_LAZY_PATTERNS_FAILURE:
-			return {
-				...state,
-				error: payload,
-				loading: false,
-			}
+	case ACTION_TYPES.GET_PATTERNS_FAILURE:
+	case ACTION_TYPES.GET_LAZY_PATTERNS_FAILURE:
+		return {
+			...state,
+			error: payload,
+			loading: false,
+		};
 
-		default: return state;
+	default: return state;
 	}
 };
