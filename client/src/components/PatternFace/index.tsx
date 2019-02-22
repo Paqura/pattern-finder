@@ -26,11 +26,7 @@ const
 		loading: boolean,
 	}) =>
 	<React.Fragment>
-		{props.isEditMode &&
-			<Button
-				text="Edit"
-				hasBorder
-			/>}
+		{props.isEditMode &&	<Button	text="Edit"	hasBorder />}
 
 			{!props.loading
 				? <React.Fragment>
@@ -39,10 +35,7 @@ const
 							<PatternGrid>
 								<MarginBlock top={-30} left={30} right={30}>
 									<PatternSquare>
-										<PatternView
-											src={props.pattern.imgPath}
-											alt={props.pattern.title}
-										/>
+										<PatternView src={props.pattern.imgPath} alt={props.pattern.title} />
 									</PatternSquare>
 								</MarginBlock>
 
